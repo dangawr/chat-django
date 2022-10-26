@@ -1,26 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <title>Chat Rooms</title>
-</head>
-<body>
-    What chat room would you like to enter?<br>
-    <input id="room-name-input" type="text" size="100"><br>
-    <input id="room-name-submit" type="button" value="Enter">
+{% extends 'base.html' %}
 
-    <script>
-        document.querySelector('#room-name-input').focus();
-        document.querySelector('#room-name-input').onkeyup = function(e) {
-            if (e.keyCode === 13) {  // enter, return
-                document.querySelector('#room-name-submit').click();
-            }
-        };
+{% block title %}Rooms | {% endblock %}
 
-        document.querySelector('#room-name-submit').onclick = function(e) {
-            var roomName = document.querySelector('#room-name-input').value;
-            window.location.pathname = '/chat/' + roomName + '/';
-        };
-    </script>
-</body>
-</html>
+{% block content %}
+<div class="p-10 lg:p-20 text-center">
+    <h1 class="text-3xl lg:text-6xl text-white">Rooms</h1>
+</div>
+
+
+<div class="w-full flex flex-wrap items-center">
+    {% for room in rooms %}
+        <div class="w-full lg:w-1/4 px-3 py-3">
+            <div class="p-4 bg-white shadow rounded-xl text-center">
+                <h2 class="mb-5 text-2xl font-semibold">{{ room.name }}</h2>
+
+                <a href="{% url 'chat:room' room.slug %}" class="px-5 py-3 block rounded-xl text-white bg-teal-600 hover:bg-teal-700">Join</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

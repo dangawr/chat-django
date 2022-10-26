@@ -3,10 +3,12 @@ from django.views.generic import CreateView
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
+from .models import Room
 
 
 def index(request):
-    return render(request, "chat/index.html")
+    rooms = Room.objects.all()
+    return render(request, "chat/index.html", {'rooms': rooms})
 
 
 def room(request, room_name):
