@@ -14,7 +14,7 @@ def index(request):
 @login_required
 def room(request, room_name):
     room = Room.objects.get(slug=room_name)
-    messages = Message.objects.filter(room=room)[0:20]
+    messages = reversed(Message.objects.filter(room=room).order_by('-pk')[0:50])
     return render(request, "chat/room.html", {"room": room, 'messages': messages})
 
 
