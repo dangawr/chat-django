@@ -9,7 +9,7 @@ Simple Chat App built with django and channels that allows register user and sto
 - Deployment
 
 ## How to run:
-- Install deps 
+- Install deps:
 ```
 pip install -r requirements.txt
 ```
