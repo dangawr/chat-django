@@ -18,3 +18,7 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
+![img.png](img/img.png)
+![img_1.png](img/img_1.png)
+
+
